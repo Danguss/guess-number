@@ -18,7 +18,11 @@ test 'it renders', (assert) ->
 test 'Has .game div', (assert) ->
   assert.ok @$().find('.game').length
 
-test 'Has .game.result div', (assert) ->
+test 'Has no .game.result div', (assert) ->
+  assert.ok @$().find('.game .result').length == 0
+
+test 'Has .game.result div when answer isnt 0', (assert) ->
+  @subject().set('answer', 'answer')
   assert.ok @$().find('.game .result').length
 
 test 'Has .game .input', (assert) ->

@@ -20,6 +20,7 @@ GuessGameComponent = Ember.Component.extend({
     guessingAnswer = @get('game').aGuess(@get('guessValue'))
     if(@get('game').isGameOver())
       @toggleVisibility()
+      @set 'isGameOver', true
       return guessingAnswer
     else guessingAnswer
 
@@ -27,6 +28,7 @@ GuessGameComponent = Ember.Component.extend({
 
   randomNumber: ->
     Math.floor Math.random() * 100 + 1
+
 
   toggleVisibility: ->
     $('.game .gameProgress').toggle()
@@ -42,6 +44,7 @@ GuessGameComponent = Ember.Component.extend({
       @set 'guessValue', gValue
     newGame: ->
       @toggleVisibility()
+      @set 'isGameOver', false
       @set 'game', new Game(@randomNumber())
       @set 'guessValue', ''
 })

@@ -1,9 +1,24 @@
-<div class="game" >
-  <div class="result">{{answer}}</div>
-  Guesses count: <div class="counter">{{count}}</div>
-  <div class="gameProgress">
-  <input name="number" value={{guessValue}} type="number">
-  <button class="submit" {{action "performGuess"}}>Submit</button>
+<form  {{action "performGuess" on="submit"}}>
+<div class="panel panel-default game">
+  <div class="panel-heading">
+    <h2 class="col-md-12"> Guess-Number Game</h2>
   </div>
-  <button class="playAgain" {{action "newGame"}}>Play Again</button>
+  <div class="panel-body">
+    <h4><div class="col-md-12 alert alert-info"><strong>Guess a number from 1 to 100</strong></div></h4>
+    <div class="col-md-12" >
+      {{#if answer}}
+      <div class="result alert {{if isGameOver 'alert-success' 'alert-danger'}}">{{answer}}</div>
+      {{/if}}
+      <span class="label label-info">Guesses count:
+        <span class="counter badge">{{count}}</span>
+      </span>
+
+        <input name="number" class="gameProgress form-control" min="1" max="100" value={{guessValue}} type="number">
+    </div>
+  </div>
+  <div class="panel-footer col-md-12">
+    <button class="submit btn btn-primary gameProgress">Submit</button>
+    <button class="playAgain btn btn-primary" {{action "newGame"}}>Play Again</button>
+  </div>
 </div>
+</form>

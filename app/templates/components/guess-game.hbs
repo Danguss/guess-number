@@ -1,0 +1,9 @@
+<div class="game" >
+  <div class="result">{{answer}}</div>
+  Guesses count: <div class="counter">{{count}}</div>
+  <div class="gameProgress">
+  <input name="number" value={{guessValue}} type="number">
+  <button class="submit" {{action "performGuess"}}>Submit</button>
+  </div>
+  <button class="playAgain" {{action "newGame"}}>Play Again</button>
+</div>
